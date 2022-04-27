@@ -23,3 +23,33 @@ type User {
   email: String!
   todos: [Todo]
 }
+
+type Subscription {
+  todo: TodoSubscriptioPayload!
+}
+input TodoAddInput {
+  name: String!
+  content: String!
+  userId: Int!
+}
+enum MutationOperationType {
+  UPDATE
+  ADD
+  DELETE
+}
+
+type TodoSubscriptioPayload {
+  todo: Todo!
+  mutation: MutationOperationType!
+}
+input TodoUpdateInput {
+  name: String
+  content: String
+  userId: Int
+  status: TodoStatusEnum
+}
+type Mutation {
+  addTodo(addTodoInput: TodoAddInput): Todo!
+  updateTodo(id: Int!, updateTodoInput: TodoUpdateInput!): Todo!
+  deleteTodo(id: Int!): Todo!
+}
