@@ -26,7 +26,6 @@ export const Mutation = {
         ) {
           throw new Error(`Le user d'id ${updateTodoInput.userId} n'existe pas`);
         } else {
-          //Il faut que l'id du todo existe
           const todo = db.todos.find((todoItem) => todoItem.id === id);
           if (!todo) {
             throw new Error(`Le todo d'id ${id} n'existe pas`);
